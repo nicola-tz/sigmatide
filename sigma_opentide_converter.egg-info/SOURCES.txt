@@ -1,0 +1,16 @@
+LICENSE
+MANIFEST.in
+README.md
+requirements.txt
+setup.py
+sigma_opentide_converter/__init__.py
+sigma_opentide_converter/cli.py
+sigma_opentide_converter/config.py
+sigma_opentide_converter/converter.py
+sigma_opentide_converter.egg-info/PKG-INFO
+sigma_opentide_converter.egg-info/SOURCES.txt
+sigma_opentide_converter.egg-info/dependency_links.txt
+sigma_opentide_converter.egg-info/entry_points.txt
+sigma_opentide_converter.egg-info/not-zip-safe
+sigma_opentide_converter.egg-info/requires.txt
+sigma_opentide_converter.egg-info/top_level.txt

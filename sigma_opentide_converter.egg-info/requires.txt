@@ -1,0 +1,6 @@
+pysigma>=0.10.0
+pysigma-backend-splunk>=1.0.0
+PyYAML>=6.0
+click>=8.0.0
+colorama>=0.4.4
+rich>=13.0.0
