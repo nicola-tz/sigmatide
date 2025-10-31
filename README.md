@@ -58,6 +58,13 @@ sigma-opentide convert input_rule.yml output_rule.yaml --target defender
 sigma-opentide convert input_rule.yml output_rule.yaml --target splunk
 ```
 
+**Handling Query Generation Failures**: If one platform's query generation fails (e.g., due to incompatible rule syntax), you'll be prompted to continue with only the successful platform(s). Use `--non-interactive` to automatically proceed without prompts:
+
+```bash
+# Auto-proceed with successful queries only
+sigma-opentide convert input_rule.yml output_rule.yaml --non-interactive
+```
+
 ### Batch Convert Directory
 
 Convert all Sigma rules in a directory:
@@ -68,6 +75,13 @@ sigma-opentide batch input_directory/ output_directory/
 With specific target:
 ```bash
 sigma-opentide batch input_directory/ output_directory/ --target both
+```
+
+**Interactive Mode for Batch**: By default, batch conversion automatically proceeds with successful queries when failures occur. Use `--interactive` to be prompted for each file:
+
+```bash
+# Get prompted for each file with failures
+sigma-opentide batch input_directory/ output_directory/ --interactive
 ```
 
 ### Validate a Sigma Rule
@@ -81,14 +95,22 @@ sigma-opentide validate suspicious_process.yml
 
 ```bash
 # Main commands
-sigma-opentide convert <input_file> <output_file> [--target <defender|splunk|both>]
-sigma-opentide batch <input_dir> <output_dir> [--target <defender|splunk|both>]
+sigma-opentide convert <input_file> <output_file> [OPTIONS]
+sigma-opentide batch <input_dir> <output_dir> [OPTIONS]
 sigma-opentide validate <rule_file>
 sigma-opentide check-dependencies
 
-# Options
+# Convert command options
 --target defender|splunk|both    Target platform(s) for conversion (default: both)
+--non-interactive, -n            Skip prompts on failures (auto-proceed with successful queries)
 --verbose, -v                    Enable verbose output
+
+# Batch command options
+--target defender|splunk|both    Target platform(s) for conversion (default: both)
+--interactive, -i                Enable prompts for each file on failures (default: auto-proceed)
+--verbose, -v                    Enable verbose output
+
+# General options
 --help                          Show help message
 --version                       Show version information
 ```
@@ -214,9 +236,14 @@ pip install pysigma pysigma-backend-splunk
 - Check that the `microsoft_xdr` and `splunk_windows` pipelines are available
 
 **"Query generation failed"**
+- Some Sigma rules may not convert properly to all target platforms
+- When this occurs, you'll be notified and can choose to:
+  - Continue with only the successful platform(s) 
+  - Cancel the conversion to fix the rule first
 - Validate your Sigma rule syntax first: `sigma-opentide validate rule.yml`
 - Check that the rule's log source is supported
 - Review the rule for complex detection logic that may need manual adjustment
+- Use `--target` to generate only for a specific platform if one consistently fails
 
 ### Getting Help
 
@@ -279,7 +306,4 @@ This project is licensed under the MIT License. See LICENSE file for details.
 For issues, questions, or contributions:
 - Create an issue in the repository
 - Contact the Detection Engineering team
-
 - Review the troubleshooting section above
-
-Please note this project is in very early stages and in active development, so use at your own risk. 
