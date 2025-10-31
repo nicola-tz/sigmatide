@@ -279,4 +279,7 @@ This project is licensed under the MIT License. See LICENSE file for details.
 For issues, questions, or contributions:
 - Create an issue in the repository
 - Contact the Detection Engineering team
+
 - Review the troubleshooting section above
+
+Please note this project is in very early stages and in active development, so use at your own risk. 
