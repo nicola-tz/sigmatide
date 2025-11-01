@@ -1,6 +1,7 @@
 # Sigma to OpenTide Converter
 
 A command-line tool for converting Sigma detection rules to OpenTide MDR format. This tool supports generating configurations for both Microsoft Defender for Endpoint and Splunk platforms. Check the OpenTide project here! https://github.com/OpenTideHQ
+This project has no direct affiliation with OpenTide and is provided as is. It is currently under active development, if you find any bugs or issues you can create an Issue and I'll do my best to take a look and resolve it.
 
 ## Features
 
@@ -308,3 +309,4 @@ For issues, questions, or contributions:
 - Contact the Detection Engineering team
 
 - Review the troubleshooting section above
+
